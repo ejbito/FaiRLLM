@@ -8,7 +8,6 @@ do
         --sst_class $sst \
         --recommend_num $recommend_num \
         --save_folder ./movie/top_${recommend_num}/${sst}/ \
-        --sst_json_path ./sst_json.json \
-        --api_key your_api_key
+        --sst_json_path ./sst_json.json
     done
 done
