@@ -19,6 +19,8 @@ AZURE_OPENAI_API_VERSION = "your_api_version"
 
 Replace your_api_key_here, <your-resource-name>, and your_api_version with your actual Azure OpenAI information.
 
+> **Add .env to your .gitignore**
+
 ### 2. Dependencies
 
 Install required Python packages:
