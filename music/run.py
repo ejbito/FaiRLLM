@@ -5,7 +5,7 @@ import csv
 from tqdm import tqdm
 import backoff
 import json
-import openai
+from openai import AzureOpenAI
 
 parser = argparse.ArgumentParser(description = 'FaiRLLM')
 parser.add_argument('--singer_list', type=str, default = '10000-MTV-Music-Artists-page-1.csv')
