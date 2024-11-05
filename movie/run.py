@@ -8,14 +8,13 @@ import json
 from openai import AzureOpenAI
 
 parser = argparse.ArgumentParser(description = 'FaiRLLM')
-parser.add_argument('--director_list', type = str, default = 'director.csv')
-parser.add_argument('--save_folder', type = str, default = './')
-parser.add_argument('--collect_num', type = int, default= 500, help = 'The num for collecting feedback')
-parser.add_argument('--start', type = int, default = 0, help = 'The num for collecting feedback')
-
-parser.add_argument('--recommend_num', type = int, default = 20, help = 'The recommended music list')
-parser.add_argument('--sst_class', type = str, default = 'country', help = 'the sst class')
-parser.add_argument('--sst_json_path', type = str, default = './sst_json.json', help = 'the path for sst json file')
+parser.add_argument('--director_list', type=str, default = 'director.csv')
+parser.add_argument('--save_folder', type=str, default = './')
+parser.add_argument('--collect_num', type=int, default= 500, help = 'The num for collecting feedback')
+parser.add_argument('--start', type=int, default = 0, help = 'The num for collecting feedback')
+parser.add_argument('--recommend_num', type=int, default = 20, help = 'The recommended music list')
+parser.add_argument('--sst_class', type=str, default = 'country', help = 'the sst class')
+parser.add_argument('--sst_json_path', type=str, default = './sst_json.json', help = 'the path for sst json file')
 args = parser.parse_args()
 
 name_list = pd.read_csv(args.director_list)['Director']
@@ -37,7 +36,7 @@ def request_post(**kwargs):
 
 # Function to generate recommendations for a specific director and sensitive attribute
 def acquire_name_sensitive_attr(sensitive_attr, name):
-    messages =[]
+    messages = []
 
     system_msg = 'You are a movie recommendation system.'
     messages.append({'role': 'system', 'content': system_msg})
@@ -70,6 +69,7 @@ sst_list = sst_dict[args.sst_class]
 
 # Loop through each sensitive attribute in the list
 for sensitive_attr in tqdm(sst_list):
+
     # Define the output CSV file for each sensitive attribute
     if sensitive_attr == '':
         result_csv = args.save_folder + '/neutral.csv'
