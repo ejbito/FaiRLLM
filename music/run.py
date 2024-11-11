@@ -23,7 +23,7 @@ singer_list = pd.read_csv(args.singer_list)['name']
 # Ensure the following variables are in your .env file
 client = AzureOpenAI(
     api_key = os.getenv('AZURE_OPENAI_API_KEY'), # CHANGE ME: Add to .env
-    api_endpoint = os.getenv('AZURE_OPENAI_ENDPOINT'), # CHANGE ME: Add to .env
+    azure_endpoint = os.getenv('AZURE_OPENAI_ENDPOINT'), # CHANGE ME: Add to .env
     api_version = os.getenv('AZURE_OPENAI_API_VERSION') # CHANGE ME: Add to .env
 )
 
@@ -84,7 +84,7 @@ for sensitive_attr in tqdm(sst_list):
     except:
         with open(result_csv, 'a', encoding = 'utf-8') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow(['Name', 'System_msg', 'Instruction', 'Result', 'Sensitive Attribute', 'Response'])
+            writer.writerow(['name', 'system_msg', 'instruction', 'result', 'sensitive attribute', 'response'])
 
     # Initialise a list to hold all results for this sensitive attribute
     result_list = []
